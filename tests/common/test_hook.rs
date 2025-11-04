@@ -43,7 +43,9 @@ pub(crate) fn test_hook<V: 'static>(
 
         props.check.borrow_mut()(value, &mut assertions);
 
-        rsx! { div {} }
+        rsx! {
+            div {}
+        }
     }
 
     let mut vdom = VirtualDom::new_with_props(
@@ -60,7 +62,7 @@ pub(crate) fn test_hook<V: 'static>(
         vdom.render_immediate(&mut NoOpMutations);
     }
 
-    vdom.in_runtime(|| ScopeId::ROOT.in_runtime(|| {}))
+    vdom.in_runtime(|| {})
 }
 
 #[derive(Debug)]
